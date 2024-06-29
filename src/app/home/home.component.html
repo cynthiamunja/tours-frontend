@@ -1,0 +1,129 @@
+
+<div class="toursadddiv">
+    <form (ngSubmit)="addTour()" [formGroup]='addTourForm'>
+        <div formGroupName="addToursdiv">
+          <div>
+            <label>Tour Name</label>
+            <input type="text" formControlName="tourName">
+            <div *ngIf="addTourForm.get('addToursdiv.tourName')?.touched && !addTourForm.get('addToursdiv.tourName')?.valid">
+              <p *ngIf="addTourForm.get('addToursdiv.tourName')?.hasError('required')">Tour name is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Tour Image</label>
+            <input type="text" formControlName="tourImage">
+            <div *ngIf="addTourForm.get('addToursdiv.tourImage')?.touched && !addTourForm.get('addToursdiv.tourImage')?.valid">
+              <p *ngIf="addTourForm.get('addToursdiv.tourImage')?.hasError('required')">Tour image is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Tour Location</label>
+            <input type="text" formControlName="tourLocation">
+            <div *ngIf="addTourForm.get('addToursdiv.tourLocation')?.touched && !addTourForm.get('addToursdiv.tourLocation')?.valid">
+              <p *ngIf="addTourForm.get('addToursdiv.tourLocation')?.hasError('required')">Tour location is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Tour Description</label>
+            <input type="text" formControlName="tourDescription">
+            <div *ngIf="addTourForm.get('addToursdiv.tourDescription')?.touched && !addTourForm.get('addToursdiv.tourDescription')?.valid">
+              <p *ngIf="addTourForm.get('addToursdiv.tourDescription')?.hasError('required')">Tour description is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Tour Price</label>
+            <input type="number" formControlName="tourPrice">
+            <div *ngIf="addTourForm.get('addToursdiv.tourPrice')?.touched && !addTourForm.get('addToursdiv.tourPrice')?.valid">
+              <p *ngIf="addTourForm.get('addToursdiv.tourPrice')?.hasError('required')">Tour price is required</p>
+            </div>
+          </div>
+      
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+      
+    </div>
+
+<div class="tours">
+<div class="eachtour" *ngFor="let tour of tours">
+    <img [src]="tour.tourImage" alt="Tour Image">
+    <p><b>{{tour.tourName}}: Kes {{tour.tourPrice}}</b></p>
+    <p>Location: {{tour.tourLocation}}</p>
+    <p>{{tour.tourDescription}}</p>
+    <!-- <ng-container *ngIf="username === 'admin'">
+        <button class="updateTour" [attr.data-id]="tour.tourID">Update</button>
+        <br><br>
+        <button class="deleteTour" [attr.data-id]="tour.tourID">Delete</button>
+    </ng-container>
+    <button class="bookTour" [attr.data-id]="tour.tourID">Book Tour</button> -->
+</div>
+</div>
+
+<div class="hotelsadddiv">
+    <form (ngSubmit)="addHotel()" [formGroup]='addHotelForm'>
+        <div formGroupName="addhotelsdiv">
+          <div>
+            <label>Hotel Name</label>
+            <input type="text" formControlName="hotelName">
+            <div *ngIf="addHotelForm.get('addhotelsdiv.hotelName')?.touched && !addHotelForm.get('addhotelsdiv.hotelName')?.valid">
+              <p *ngIf="addHotelForm.get('addhotelsdiv.hotelName')?.hasError('required')">Hotel name is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Hotel Image</label>
+            <input type="text" formControlName="hotelImage">
+            <div *ngIf="addHotelForm.get('addhotelsdiv.hotelImage')?.touched && !addHotelForm.get('addhotelsdiv.hotelImage')?.valid">
+              <p *ngIf="addHotelForm.get('addhotelsdiv.hotelImage')?.hasError('required')">Hotel image is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Hotel Location</label>
+            <input type="text" formControlName="hotelLocation">
+            <div *ngIf="addHotelForm.get('addhotelsdiv.hotelLocation')?.touched && !addHotelForm.get('addhotelsdiv.hotelLocation')?.valid">
+              <p *ngIf="addHotelForm.get('addhotelsdiv.hotelLocation')?.hasError('required')">Hotel location is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Hotel Description</label>
+            <input type="text" formControlName="hotelDescription">
+            <div *ngIf="addHotelForm.get('addhotelsdiv.hotelDescription')?.touched && !addHotelForm.get('addhotelsdiv.hotelDescription')?.valid">
+              <p *ngIf="addHotelForm.get('addhotelsdiv.hotelDescription')?.hasError('required')">Hotel description is required</p>
+            </div>
+          </div>
+      
+          <div>
+            <label>Hotel Price</label>
+            <input type="number" formControlName="hotelPrice">
+            <div *ngIf="addHotelForm.get('addhotelsdiv.hotelPrice')?.touched && !addHotelForm.get('addhotelsdiv.hotelPrice')?.valid">
+              <p *ngIf="addHotelForm.get('addhotelsdiv.hotelPrice')?.hasError('required')">Hotel price is required</p>
+            </div>
+          </div>
+      
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+      
+    </div>
+    <div class="hotels">
+        <div class="eachhotel" *ngFor="let hotel of hotels">
+            <img [src]="hotel.hotelImage" alt="hotel Image">
+            <p><b>{{hotel.hotelName}}: Kes {{hotel.hotelPrice}}</b></p>
+            <p>Location: {{hotel.hotelLocation}}</p>
+            <p>{{hotel.hotelDescription}}</p>
+             <!-- <ng-container *ngIf="username === 'admin'">
+                <button class="updatehotel" [attr.data-id]="hotel.hotelID">Update</button>
+                <br><br>
+                <button class="deletehotel" [attr.data-id]="hotel.hotelID">Delete</button>
+            </ng-container> 
+            <button class="bookhotel" [attr.data-id]="hotel.hotelID">Book hotel</button> -->
+        </div>
+        </div> 
+        
+    
