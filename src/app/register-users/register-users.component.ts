@@ -21,13 +21,12 @@ export class RegisterUsersComponent implements OnInit {
   constructor(private fb:FormBuilder, private authentication:AuthenticationService){}
 
   ngOnInit(): void {
-    this.registerUserForm =this.fb.group({
-      register: this.fb.group({
-        UserName: this.fb.control(null, Validators.required),
-        Email: this.fb.control(null, [Validators.email,Validators.required]),
-        UserPassword: this.fb.control(null, Validators.required),
-      })
+    this.registerUserForm = this.fb.group({
+      Email: ['', [Validators.required, Validators.email]],
+      UserName: ['', [Validators.required]],
+      UserPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
+    
    
   }
 
@@ -43,13 +42,14 @@ export class RegisterUsersComponent implements OnInit {
           console.error('Error occurred:', err);
         }
       );
-      
+  
       this.registerUserForm.reset();
     } else {
-      console.log('register form is invalid');
-      this.registerUserForm.markAllAsTouched();  
+      console.log('Registration form is invalid');
+      this.registerUserForm.markAllAsTouched();  // Mark all controls as touched to trigger validation messages
     }
   }
+  
   
  
 

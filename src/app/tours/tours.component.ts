@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AsyncValidatorFn,ReactiveFormsModule,   FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToursService } from '../services/tours.service';
 import { tour } from '../models/tours';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from 'express';
 
 
 
@@ -15,12 +17,12 @@ import { tour } from '../models/tours';
   styleUrl: './tours.component.css'
 })
 export class ToursComponent implements OnInit {
-  tours!:tour[]
-  constructor( private ps:ToursService){ }
+  tours!:any
+  constructor( private ps:ToursService, private route:ActivatedRoute, private xtours:ToursService, private router:Router){ }
 
 
   ngOnInit():void{
-    this.tours=this.ps.getTours()
+    // this.tours=this.ps.xtours
   }
 }
 //currentTours=[

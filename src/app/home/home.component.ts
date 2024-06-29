@@ -47,7 +47,7 @@ export class HomeComponent  implements OnInit {
            })
          })
 
-         this.tours=this.ps1.getTours()
+        // this.tours=this.ps1.getTours()
          this.hotels=this.ps2.gethotels()
   }
   
@@ -55,7 +55,7 @@ export class HomeComponent  implements OnInit {
 addTour(){
   if (this.addTourForm.valid){
         console.log("form valid")
-       this.ps1.addTour
+       //this.ps1.addTour
       }
       else{
         this.addTourForm.markAllAsTouched(); 
